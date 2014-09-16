@@ -1,5 +1,5 @@
 package storage.io;
 
-public class placeholder {
+public class IO {
 
 }

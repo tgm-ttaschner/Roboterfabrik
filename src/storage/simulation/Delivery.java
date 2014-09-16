@@ -1,5 +1,5 @@
 package storage.simulation;
 
-public class placeholder {
+public class Delivery {
 
 }
