@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>documentation/Roboterfabrik Protokoll.docx</name>
-			<type>1</type>
-			<location>D:/Dokumente &amp; Ordner/Schule/4. Jahrgang/SEW/Roboterfabrik Protokoll.docx</location>
-		</link>
-	</linkedResources>
 </projectDescription>
