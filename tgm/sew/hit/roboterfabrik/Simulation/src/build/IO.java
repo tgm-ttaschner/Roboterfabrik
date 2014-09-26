@@ -11,7 +11,7 @@ import java.io.*;
  *
  */
 public class IO {
-	final String pathfile;
+	private String pathfile;
 	private String[] output;
 	
 	public IO(String path) {
@@ -19,7 +19,16 @@ public class IO {
 	}
 	
 	public boolean write(String value) {
-		return true;
+		File f = new File(pathfile);
+		
+		try {
+			FileWriter writer = new FileWriter(f, true);
+			writer.write(System.getProperty("line.separator"));
+			 writer.write(value);
+			return true;
+		} catch(IOException e) {
+			return false;
+		}
 	}
 	
 	public String[] read() {
@@ -39,5 +48,34 @@ public class IO {
 		}
 		
 		return output;
+	}
+	
+	public static String getWorkingDir() {
+		String absolutepath = new File("").getAbsolutePath();
+		absolutepath = absolutepath.replace("\\", "/");
+		String ready = absolutepath +"/tgm/sew/hit/roboterfabrik/Simulation/";
+		return ready;
+	}
+	
+	public static void main(String[] args) {
+		/*
+		 * Testfall Lesen
+		 */
+		
+		String teilname = "arm"; //Im Beispiel wird das Teil per Variable uebergeben.
+		IO test = new IO(getWorkingDir() +"csv/" +teilname +".csv");
+		System.out.println(test.pathfile);
+		String[] out = test.read();
+		for (int i = 0; i < out.length; i++) {
+			System.out.println(out[i]);
+		}
+		
+		System.out.println("-----------Trennstrich-----------");
+		
+		/*
+		 * Testfall Schreiben
+		 */
+		
+		System.out.println(test.write("Testomatik im File"));
 	}
 }
