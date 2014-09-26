@@ -23,7 +23,7 @@ public class Storage {
 	public static final int CHAINDRIVE = 3;
 	public static final int EYE = 4;
 
-	public String deliver(int part) {
+	public String[] deliver(int part) {
 		return null;
 	}
 
