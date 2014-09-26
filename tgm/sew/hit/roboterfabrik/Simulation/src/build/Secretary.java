@@ -14,7 +14,7 @@ public class Secretary {
 	private int count;
 	private int anzahl;
 
-	public void Secretary(int anzahl) {
+	public Secretary(int anzahl) {
 		UniqueNumbers random = new UniqueNumbers();
 		random.add(anzahl);
 		randomnumbers = random.getRandomNumbers();
@@ -25,10 +25,6 @@ public class Secretary {
 	public Long getID() {
 		Long out =  randomnumbers[count];
 		count++;
-		
-		if (count == anzahl) { // Im Regelfall sollte es nicht zu diesem Ausnahmezustand kommen.
-			count = 0;
-		}
 		
 		return out;
 	}
