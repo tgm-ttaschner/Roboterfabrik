@@ -14,11 +14,13 @@ public class Assembler {
 	}
 
 	public void run() {
-
+		Secretary s = new Secretary();
+		Assembler a = new Assembler(s.getAssemblerID());
+		a.build();
 	}
 
 	public void build(ArrayList<String> parts) {
-
+		
 	}
 
 }
