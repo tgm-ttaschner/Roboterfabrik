@@ -10,27 +10,25 @@ package build;
  */
 public class Secretary {
 
-	private int assemblerID;
-	private int robotID;
 	Long[] randomnumbers;
-	private int count = 0;
+	private int count;
+	private int anzahl;
 
 	public void Secretary(int anzahl) {
 		UniqueNumbers random = new UniqueNumbers();
 		random.add(anzahl);
-		Long[] output = random.getRandomNumbers();
+		randomnumbers = random.getRandomNumbers();
+		this.anzahl = anzahl;
+		count = 0;
 	}
 
-	public Long getAssemblerID() {
+	public Long getID() {
 		Long out =  randomnumbers[count];
 		count++;
 		
-		return out;
-	}
-
-	public Long getRobotID() {
-		Long out =  randomnumbers[count];
-		count++;
+		if (count == anzahl) { // Im Regelfall sollte es nicht zu diesem Ausnahmezustand kommen.
+			count = 0;
+		}
 		
 		return out;
 	}
