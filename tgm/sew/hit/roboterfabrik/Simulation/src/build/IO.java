@@ -134,7 +134,7 @@ public class IO {
 	 * 
 	 * @param path The entered filepath.
 	 */
-	public boolean checkDir(String path) {
+	public static boolean checkDir(String path) {
 		File f = new File(path);
 		boolean dir = f.isDirectory();
 		
