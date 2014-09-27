@@ -138,6 +138,7 @@ public class IO {
 	
 	/* --TEST CASES --*/
 	public static void main(String[] args) {
+		
 		IO.Check(getWorkingDir() +"csv/");
 		//WRITE
 		String teilname = "arm"; //Im Beispiel wird das Teil per Variable uebergeben.
