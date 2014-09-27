@@ -98,22 +98,12 @@ public class IO {
 	
 	/**
 	 * 
-	 * Checks if the directory, which the user entered is existent, otherwise it will be created. Empty csv-files will be created in the directory.
+	 * Empty csv-files will be created in the directory.
 	 * 
 	 * IMPORTANT NOTICE: Use the 'getWorkingDir()' method first, then enter the user-input directory. 	IO.check(getWorkingDir() +userinput);
 	 * 
 	 */
-	public static void Check(String path) {
-		File f = new File(path);
-		boolean dir = f.isDirectory();
-		
-		if (dir == true) {
-			System.out.println("Directory found. Robot Factory is booting....");
-		} else {
-			System.out.println("Directory not found, mkdir in progress...");
-			f.mkdir();
-		}
-		
+	public static void CheckFiles(String path) {
 		try {
 			BufferedWriter eye = new BufferedWriter(new FileWriter(path+"/eye.csv"));
 			eye.write("");
@@ -132,14 +122,36 @@ public class IO {
 			chaindrive.close();
 			
 		} catch (IOException e) {
-			
+			System.out.println("Fatal Error!\nIOException");
+		}
+	}
+	
+	/**
+	 * 
+	 * Checks if the directory, which the user entered is existent, otherwise it will be created. 
+	 * 
+	 * IMPORTANT NOTICE: Use the 'getWorkingDir()' method first, then enter the user-input directory. 	IO.check(getWorkingDir() +userinput);
+	 * 
+	 * @param path The entered filepath.
+	 */
+	public boolean checkDir(String path) {
+		File f = new File(path);
+		boolean dir = f.isDirectory();
+		
+		if (dir == true) {
+			System.out.println("Directory found. Robot Factory is booting....");
+			return true;
+		} else {
+			System.out.println("Directory not found, mkdir in progress...");
+			f.mkdir();
+			return false;
 		}
 	}
 	
 	/* --TEST CASES --*/
 	public static void main(String[] args) {
 		
-		IO.Check(getWorkingDir() +"csv/");
+		//IO.checkDir(getWorkingDir() +"/csv");
 		//WRITE
 		String teilname = "arm"; //Im Beispiel wird das Teil per Variable uebergeben.
 		IO test = new IO(getWorkingDir() +"csv/" +teilname +".csv");
