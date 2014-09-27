@@ -1,54 +1,53 @@
 package build;
 
-import java.io.*;
+/**
+ * 
+ * This class simulates a Console Line Interface (CLI).
+ * 
+ * 
+ * @author Thomas Taschner
+ * @version 27.09.2014
+ *
+ */
 
 public class CLI {
 
 	private String arguments;
-
 	private String lagerVerzeichnis;
-
 	private String logVerzeichnis;
 
 	private int lieferantenAnzahl;
-
 	private int monteurAnzahl;
-
 	private int lagerMitarbeiterAnzahl;
-
 	private int laufzeit;
 
-	private int countargs = 0;
-
-	public CLI(String arguments) throws NotEnoughArgumentsException	{
-
+	public CLI()	{
+		
+	}
+	
+	public void start(String arguments) throws NotEnoughArgumentsException	{
+		
 		this.arguments = arguments;
 
-		if (arguments == null)	{
-			throw new NullPointerException("Ihre Angabe darf nicht null sein!");
+		if (arguments == null || arguments == "")	{
+			throw new NullPointerException("Ihre Angabe darf nicht null oder leer sein!");
 		}
 
-		if (!(arguments.trim()).startsWith("java"))	{
-			throw new IllegalArgumentException("Der Aufruf muss mit 'java' starten!");
+		if (!(arguments.trim()).startsWith("java tgm.sew.hit.roboterfabrik.Simulation"))	{
+			throw new IllegalArgumentException("Der Aufruf muss mit 'java tgm.sew.hit.roboterfabrik.Simulation' starten!");
 		}
 
-		for (int i = 0; i < arguments.length(); i = i + 4)	{
-			try {
-				if (i+4 < arguments.length())	{
-					if (arguments.substring(i, i+4).contains("--"))	{
-						countargs++;
-					}
-				}
-			} catch (StringIndexOutOfBoundsException e)	{
-				System.out.println("Test");
-			}
+		if (!arguments.contains("--lager ") || lagerVerzeichnis == null || lagerVerzeichnis.equals(""))	{
+			throw new IllegalArgumentException("Geben Sie den Lagerparameter (--lager) und einen gültigen Pfad (z.B. lager/stuff) zum Lager an");
 		}
-
-		if (countargs == 0)	{
-			throw new NotEnoughArgumentsException();
+		
+		if (!arguments.contains("--logs ") || logVerzeichnis == null || logVerzeichnis.equals(""))	{
+			throw new IllegalArgumentException("Geben Sie den Logparameter (--logs) und einen gültigen Pfad (z.B. log/stuff) zum Logverzeichnis an");
 		}
-
-		System.out.println(countargs);
+		
+		if (!arguments.contains("--lieferanten ") || lieferantenAnzahl < 1)	{
+			throw new IllegalArgumentException("Geben Sie den Lieferantenparameter (--lieferanten) und eine gültige Ganzzahl > 0 (z.B. 5) an");
+		}
 
 		/*
 		BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
@@ -65,7 +64,65 @@ public class CLI {
 		 */
 	}
 
+	public String getArguments() {
+		return arguments;
+	}
+
+	public void setArguments(String arguments) {
+		this.arguments = arguments;
+	}
+
+	public String getLagerVerzeichnis() {
+		return lagerVerzeichnis;
+	}
+
+	public void setLagerVerzeichnis(String lagerVerzeichnis) {
+		this.lagerVerzeichnis = lagerVerzeichnis;
+	}
+
+	public String getLogVerzeichnis() {
+		return logVerzeichnis;
+	}
+
+	public void setLogVerzeichnis(String logVerzeichnis) {
+		this.logVerzeichnis = logVerzeichnis;
+	}
+
+	public int getLieferantenAnzahl() {
+		return lieferantenAnzahl;
+	}
+
+	public void setLieferantenAnzahl(int lieferantenAnzahl) {
+		this.lieferantenAnzahl = lieferantenAnzahl;
+	}
+
+	public int getMonteurAnzahl() {
+		return monteurAnzahl;
+	}
+
+	public void setMonteurAnzahl(int monteurAnzahl) {
+		this.monteurAnzahl = monteurAnzahl;
+	}
+
+	public int getLagerMitarbeiterAnzahl() {
+		return lagerMitarbeiterAnzahl;
+	}
+
+	public void setLagerMitarbeiterAnzahl(int lagerMitarbeiterAnzahl) {
+		this.lagerMitarbeiterAnzahl = lagerMitarbeiterAnzahl;
+	}
+
+	public int getLaufzeit() {
+		return laufzeit;
+	}
+
+	public void setLaufzeit(int laufzeit) {
+		this.laufzeit = laufzeit;
+	}
+
 	public static void main(String[] args) throws NotEnoughArgumentsException {
-		new CLI("java tgm.sew.hit.roboterfabrik.Simulation --lager /verzeichnis/zum/lager --logs /verzeichnis/zum/loggen --lieferanten 12 --monteure 25 --laufzeit 10000");
+		CLI c = new CLI();
+		c.setLagerVerzeichnis("a");
+		c.start("java tgm.sew.hit.roboterfabrik.Simulation --lager "+ c.getLagerVerzeichnis() +" --logs "+ c.getLogVerzeichnis() +" --lieferanten "+ c.getLieferantenAnzahl() +" --monteure "+ c.getMonteurAnzahl() +" --laufzeit "+ c.getLaufzeit());
 	}
 }
