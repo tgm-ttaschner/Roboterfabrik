@@ -45,7 +45,9 @@ public class IO {
 			return true;
 			
 		} catch (IOException e) {
-			System.out.println("Es ist ein schwerwiegender Fehler aufgetreten!\nIOException");
+			System.out.println("Fatal Error!\nIOException");
+		} catch (NullPointerException e) {
+		System.out.println("Fatal Error!\nNullPointerException");
 		}
 		
 		return false;
@@ -146,30 +148,6 @@ public class IO {
 			f.mkdir();
 			return false;
 		}
-	}
-	
-	/* --TEST CASES --*/
-	public static void main(String[] args) {
-		
-		//IO.checkDir(getWorkingDir() +"/csv");
-		//WRITE
-		String teilname = "arm"; //Im Beispiel wird das Teil per Variable uebergeben.
-		IO test = new IO(getWorkingDir() +"csv/" +teilname +".csv");
-		System.out.println(test.write("auge,1,2,3,4,5,6,7,8,9,10"));
-		System.out.println(test.write("auge,11,12,13,14,15,16,17,18,19,20"));
-		System.out.println(test.write("auge,21,22,23,24,25,26,27,28,29,30"));
-		
-		System.out.println("----------------------");
-
-		//READ
-		
-		ArrayList<String> out = test.read();
-		
-		Iterator<String> it = out.iterator();
-		
-		while (it.hasNext()) {
-			System.out.println(it.next());
-		}		
 	}
 
 }
