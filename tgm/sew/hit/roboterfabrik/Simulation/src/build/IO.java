@@ -44,8 +44,6 @@ public class IO {
 			buff.close();
 			return true;
 			
-		} catch (FileNotFoundException e) {
-			System.out.println("Es ist ein schwerwiegender Fehler aufgetreten!\nFile nicht gefunden.");
 		} catch (IOException e) {
 			System.out.println("Es ist ein schwerwiegender Fehler aufgetreten!\nIOException");
 		}
@@ -76,9 +74,9 @@ public class IO {
 			buff.close();
 			
 		} catch (FileNotFoundException e) {
-			System.out.println("Es ist ein schwerwiegender Fehler aufgetreten!\nFile nicht gefunden.");
+			System.out.println("Fatal Error!\nFile not found.");
 		} catch (IOException e) {
-			System.out.println("Es ist ein schwerwiegender Fehler aufgetreten!\nIOException");
+			System.out.println("Fatal Error!\nIOException");
 		}
 		
 		return output;
@@ -100,17 +98,47 @@ public class IO {
 	
 	/**
 	 * 
-	 * Checks if the directory, which the user entered is existent, otherwise a prompt asks to create it.
+	 * Checks if the directory, which the user entered is existent, otherwise it will be created. Empty csv-files will be created in the directory.
+	 * 
 	 * IMPORTANT NOTICE: Use the 'getWorkingDir()' method first, then enter the user-input directory. 	IO.check(getWorkingDir() +userinput);
 	 * 
 	 */
 	public static void Check(String path) {
+		File f = new File(path);
+		boolean dir = f.isDirectory();
 		
+		if (dir == true) {
+			System.out.println("Directory found. Robot Factory is booting....");
+		} else {
+			System.out.println("Directory not found, mkdir in progress...");
+			f.mkdir();
+		}
+		
+		try {
+			BufferedWriter eye = new BufferedWriter(new FileWriter(path+"eye.csv"));
+			eye.write("");
+			eye.close();
+			
+			BufferedWriter torso = new BufferedWriter(new FileWriter(path+"torso.csv"));
+			torso.write("");
+			torso.close();
+			
+			BufferedWriter arm = new BufferedWriter(new FileWriter(path+"arm.csv"));
+			arm.write("");
+			arm.close();
+			
+			BufferedWriter chaindrive = new BufferedWriter(new FileWriter(path+"chaindrive.csv"));
+			chaindrive.write("");
+			chaindrive.close();
+			
+		} catch (IOException e) {
+			
+		}
 	}
 	
 	/* --TEST CASES --*/
 	public static void main(String[] args) {
-
+		IO.Check(getWorkingDir() +"csv/");
 		//WRITE
 		String teilname = "arm"; //Im Beispiel wird das Teil per Variable uebergeben.
 		IO test = new IO(getWorkingDir() +"csv/" +teilname +".csv");
@@ -128,8 +156,7 @@ public class IO {
 		
 		while (it.hasNext()) {
 			System.out.println(it.next());
-		}
-		
+		}		
 	}
 
 }
