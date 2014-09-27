@@ -6,7 +6,6 @@ public class UniqueNumbers {
 
 	private HashSet<Long> hs;
 	private Iterator<Long> iterator;
-	public static int count = 10;
 
 	public UniqueNumbers()	{
 		hs = new HashSet<Long>();
@@ -25,14 +24,12 @@ public class UniqueNumbers {
 
 	public void add(int count)	{
 
-		for (int i = 0; i < count; i++)	{
-			long random = new Random().nextLong();
-			
-			if (random < 0)	{
-				random = random*(-1);
-			}
+		if (count < 1)	{
+			throw new IllegalArgumentException("Geben Sie eine Zahl > 0 an");
+		}
 
-			hs.add(random);
+		for (int i = 0; i < count; i++)	{
+			this.add();
 		}
 	}
 
@@ -52,21 +49,7 @@ public class UniqueNumbers {
 		this.hs = hs;
 	}
 
-	public int wievieleLongs()	{
+	public int wievieleZahlen()	{
 		return hs.size();
-	}
-
-
-	public static void main(String[] args) {
-
-		UniqueNumbers un = new UniqueNumbers();
-		un.add(10);
-
-
-		System.out.println(un.wievieleLongs());
-
-		for (int i = 0; i < count; i++)	{
-			System.out.println(un.getRandomNumbers()[i]);
-		}
 	}
 }
