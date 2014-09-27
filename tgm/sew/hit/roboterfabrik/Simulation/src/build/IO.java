@@ -1,5 +1,7 @@
 package build;
+
 import java.io.*;
+import java.util.*;
 
 /**
  * 
@@ -12,7 +14,6 @@ import java.io.*;
  */
 public class IO {
 	private String pathfile;
-	private String[] output;
 	
 	/**
 	 * IMPORTANT NOTICE: When initializing an IO object, use the 'getWorkingDir()' method from below first, then enter the user-input directory.
@@ -35,10 +36,11 @@ public class IO {
 	public boolean write(String value) {
 		try {
 			char[] sequence = value.toCharArray();
-			BufferedWriter buff = new BufferedWriter(new FileWriter(pathfile));
+			BufferedWriter buff = new BufferedWriter(new FileWriter(pathfile, true));
 			for (int i = 0; i < sequence.length; i++) {
 				buff.append(sequence[i]);
 			}
+			buff.append('\n');
 			buff.close();
 			return true;
 			
@@ -58,12 +60,17 @@ public class IO {
 	 * 
 	 * @return output The String array with every line of text from the file in it.
 	 */
-	public String[] read() {
+	public ArrayList<String> read() {
+		ArrayList<String> output = new ArrayList<String>();
+		String[] temp;
+		
 		try {
 			String currline = "";
 			BufferedReader buff = new BufferedReader(new FileReader(pathfile));
 			while((currline = buff.readLine()) != null) {
-				output = currline.split(",");
+				temp = currline.split(",");
+				
+				Collections.addAll(output, temp);
 			}
 			
 			buff.close();
@@ -91,25 +98,38 @@ public class IO {
 		return ready;
 	}
 	
-	/* --TEST CASES --
+	/**
+	 * 
+	 * Checks if the directory, which the user entered is existent, otherwise a prompt asks to create it.
+	 * IMPORTANT NOTICE: Use the 'getWorkingDir()' method first, then enter the user-input directory. 	IO.check(getWorkingDir() +userinput);
+	 * 
+	 */
+	public static void Check(String path) {
+		
+	}
+	
+	/* --TEST CASES --*/
 	public static void main(String[] args) {
 
-
-		READ
-		
+		//WRITE
 		String teilname = "arm"; //Im Beispiel wird das Teil per Variable uebergeben.
 		IO test = new IO(getWorkingDir() +"csv/" +teilname +".csv");
-		System.out.println(test.pathfile);
-		String[] out = test.read();
-		for (int i = 0; i < out.length; i++) {
-			System.out.println(out[i]);
-		}
+		System.out.println(test.write("auge,1,2,3,4,5,6,7,8,9,10"));
+		System.out.println(test.write("auge,11,12,13,14,15,16,17,18,19,20"));
+		System.out.println(test.write("auge,21,22,23,24,25,26,27,28,29,30"));
 		
 		System.out.println("----------------------");
+
+		//READ
 		
-		WRITE
+		ArrayList<String> out = test.read();
 		
-		System.out.println(test.write("Testomatik im File"));
+		Iterator<String> it = out.iterator();
+		
+		while (it.hasNext()) {
+			System.out.println(it.next());
+		}
+		
 	}
-	*/
+
 }
