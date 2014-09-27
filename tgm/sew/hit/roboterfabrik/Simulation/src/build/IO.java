@@ -115,19 +115,19 @@ public class IO {
 		}
 		
 		try {
-			BufferedWriter eye = new BufferedWriter(new FileWriter(path+"eye.csv"));
+			BufferedWriter eye = new BufferedWriter(new FileWriter(path+"/eye.csv"));
 			eye.write("");
 			eye.close();
 			
-			BufferedWriter torso = new BufferedWriter(new FileWriter(path+"torso.csv"));
+			BufferedWriter torso = new BufferedWriter(new FileWriter(path+"/torso.csv"));
 			torso.write("");
 			torso.close();
 			
-			BufferedWriter arm = new BufferedWriter(new FileWriter(path+"arm.csv"));
+			BufferedWriter arm = new BufferedWriter(new FileWriter(path+"/arm.csv"));
 			arm.write("");
 			arm.close();
 			
-			BufferedWriter chaindrive = new BufferedWriter(new FileWriter(path+"chaindrive.csv"));
+			BufferedWriter chaindrive = new BufferedWriter(new FileWriter(path+"/chaindrive.csv"));
 			chaindrive.write("");
 			chaindrive.close();
 			
