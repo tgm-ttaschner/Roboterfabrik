@@ -2,9 +2,11 @@ package build;
 import java.io.File;
 import java.util.ArrayList;
 
+import threading.Watchable;
+
 public class Assembler {
 
-	private Stoppable stoppable;
+	private Watchable watchable;
 
 	private Secretary secretary;
 

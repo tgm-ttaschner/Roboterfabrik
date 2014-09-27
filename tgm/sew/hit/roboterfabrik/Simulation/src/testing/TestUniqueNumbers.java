@@ -6,6 +6,14 @@ import org.junit.*;
 
 import build.UniqueNumbers;
 
+/**
+ * The purpose of this class is to test UniqueNumbers
+ * 
+ * @author Thomas Taschner
+ * @version 27.09.2014
+ *
+ */
+
 public class TestUniqueNumbers {
 	
 	UniqueNumbers un;

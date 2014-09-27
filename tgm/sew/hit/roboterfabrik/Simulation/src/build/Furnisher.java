@@ -1,8 +1,10 @@
 package build;
 
+import threading.*;
+
 public class Furnisher {
 
-	private Stoppable stoppable;
+	private Watchable watchable;
 
 	private IO iO;
 
