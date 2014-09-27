@@ -26,7 +26,7 @@ public class Assembler {
 		IO ioEye = new IO(path3);
 		IO ioTorso = new IO(path4);
 	}
-
+/*
 	public void run() {
 		Secretary s = new Secretary();
 		a = new Assembler(s.getAssemblerID());
@@ -41,7 +41,7 @@ public class Assembler {
 		String eye1 = a.deliver(4);
 		String eye2 = a.deliver(4);
 		
-		
-	}
+	
+	}*/
 
 }
