@@ -3,5 +3,6 @@
 	<classpathentry kind="src" path="tgm/sew/hit/roboterfabrik/Simulation/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Log4J"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
