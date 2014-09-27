@@ -19,16 +19,22 @@ public class IO {
 	}
 	
 	public boolean write(String value) {
-		File f = new File(pathfile);
-		
 		try {
-			FileWriter writer = new FileWriter(f, true);
-			writer.write(System.getProperty("line.separator"));
-			 writer.write(value);
+			char[] sequence = value.toCharArray();
+			BufferedReader buff = new BufferedReader(new FileReader(pathfile));
+			for (int i = 0; i < sequence.length; i++) {
+				System.out.println(sequence[i]);
+			}
+			buff.close();
 			return true;
-		} catch(IOException e) {
-			return false;
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("Es ist ein schwerwiegender Fehler aufgetreten!\nFile nicht gefunden.");
+		} catch (IOException e) {
+			System.out.println("Es ist ein schwerwiegender Fehler aufgetreten!\nIOException");
 		}
+		
+		return false;
 	}
 	
 	public String[] read() {
@@ -61,14 +67,14 @@ public class IO {
 		/*
 		 * Testfall Lesen
 		 */
-		
+
 		String teilname = "arm"; //Im Beispiel wird das Teil per Variable uebergeben.
 		IO test = new IO(getWorkingDir() +"csv/" +teilname +".csv");
-		System.out.println(test.pathfile);
+		/*System.out.println(test.pathfile);
 		String[] out = test.read();
 		for (int i = 0; i < out.length; i++) {
 			System.out.println(out[i]);
-		}
+		}*/
 		
 		System.out.println("-----------Trennstrich-----------");
 		
