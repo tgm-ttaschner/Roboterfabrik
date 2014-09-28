@@ -86,6 +86,58 @@ public class Assembler {
 			sort(sortc1);
 			sort(sorte1);
 			sort(sorte2);
+			
+			String[] arm1 = new String[(sorta1.length + 1)];
+			String[] arm2 = new String[(sorta2.length + 1)];
+			String[] chaindrive = new String[(sortc1.length + 1)];
+			String[] eye1 = new String[(sorte1.length + 1)];
+			String[] eye2 = new String[(sorte2.length + 1)];
+			String[] torso = new String[(sortt1.length + 1)];
+			
+			for(int i = 0; i < arm1.length; i++){
+				if(i == 0){
+					arm1[i] = "Arm1";
+				}else{
+					arm1[i] = ""+sorta1[(i-1)];
+				}
+			}
+			for(int i = 0; i < arm2.length; i++){
+				if(i == 0){
+					arm2[i] = "Arm2";
+				}else{
+					arm2[i] = ""+sorta2[(i-1)];
+				}
+			}
+			for(int i = 0; i < chaindrive.length; i++){
+				if(i == 0){
+					chaindrive[i] = "Kettenantrieb";
+				}else{
+					chaindrive[i] = ""+sortc1[(i-1)];
+				}
+			}
+			for(int i = 0; i < eye1.length; i++){
+				if(i == 0){
+					eye1[i] = "Auge1";
+				}else{
+					eye1[i] = ""+sorte1[(i-1)];
+				}
+			}
+			for(int i = 0; i < eye2.length; i++){
+				if(i == 0){
+					eye2[i] = "Auge2";
+				}else{
+					eye2[i] = ""+sorte2[(i-1)];
+				}
+			}
+			for(int i = 0; i < torso.length; i++){
+				if(i == 0){
+					torso[i] = "Torso";
+				}else{
+					torso[i] = ""+sortt1[(i-1)];
+				}
+			}
+			
+			
 		}else{
 			System.out.print("Nicht alle benoetigten Teile vorhanden");
 		}
