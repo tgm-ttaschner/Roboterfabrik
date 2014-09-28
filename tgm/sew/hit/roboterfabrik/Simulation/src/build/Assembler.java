@@ -33,6 +33,7 @@ public class Assembler {
 		IO ioTorso = new IO(path4);
 		this.id = id;
 		this.idTh = idThreadee;
+		
 	}
 	public static void sort(int[] array){
 		int length = array.length;
