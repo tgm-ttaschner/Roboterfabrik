@@ -31,7 +31,7 @@ public class CLI {
 	private int laufzeit;
 
 	/**
-	 * Constructor, runs welcome() and run()
+	 * Constructor
 	 */
 	public CLI()	{
 		
