@@ -14,7 +14,9 @@ public class Assembler {
 
 	private Assembler a;
 	
-	public Assembler(int id) {
+	private Long id;
+	
+	public Assembler(Long id) {
 		File f1 = new File(""); 
 		String path1 = f1.getAbsolutePath() +"/src/arm.csv";
 		File f2 = new File(""); 
@@ -27,6 +29,7 @@ public class Assembler {
 		IO ioChaindrive = new IO(path2);
 		IO ioEye = new IO(path3);
 		IO ioTorso = new IO(path4);
+		this.id = id;
 	}
 	public static void sort(int[] array){
 		int length = array.length;
@@ -50,13 +53,12 @@ public class Assembler {
 		    }
 		}
 	}
-/*
+
 	public void run() {
-		Secretary s = new Secretary();
-		a = new Assembler(s.getAssemblerID());
+		a = new Assembler(secretary.getID());
 		a.build();
 	}
-*/
+	
 	public void build(ArrayList<String> parts) {
 		String[] a1 = a.deliver(1);
 		String[] a2 = a.deliver(1);
@@ -87,6 +89,7 @@ public class Assembler {
 			sort(sorte1);
 			sort(sorte2);
 			
+			
 			String[] arm1 = new String[(sorta1.length + 1)];
 			String[] arm2 = new String[(sorta2.length + 1)];
 			String[] chaindrive = new String[(sortc1.length + 1)];
@@ -96,44 +99,68 @@ public class Assembler {
 			
 			for(int i = 0; i < arm1.length; i++){
 				if(i == 0){
-					arm1[i] = "Arm1";
+					arm1[i] = ""+id;
 				}else{
-					arm1[i] = ""+sorta1[(i-1)];
+					if(i == 1){
+						arm1[i] = "Arm1";
+					}else{
+						arm1[i] = ""+sorta1[(i-2)];
+					}
 				}
 			}
 			for(int i = 0; i < arm2.length; i++){
 				if(i == 0){
-					arm2[i] = "Arm2";
+					arm2[i] = ""+id;
 				}else{
-					arm2[i] = ""+sorta2[(i-1)];
+					if(i == 1){
+						arm2[i] = "Arm2";
+					}else{
+						arm2[i] = ""+sorta2[(i-2)];
+					}
 				}
 			}
 			for(int i = 0; i < chaindrive.length; i++){
 				if(i == 0){
-					chaindrive[i] = "Kettenantrieb";
+					chaindrive[i] = ""+id;
 				}else{
-					chaindrive[i] = ""+sortc1[(i-1)];
+					if(i == 1){
+						chaindrive[i] = "Kettenantrieb";
+					}else{
+						chaindrive[i] = ""+sortc1[(i-2)];
+					}
 				}
 			}
 			for(int i = 0; i < eye1.length; i++){
 				if(i == 0){
-					eye1[i] = "Auge1";
+					eye1[i] = ""+id;
 				}else{
-					eye1[i] = ""+sorte1[(i-1)];
+					if(i == 1){
+						eye1[i] = "Auge1";
+					}else{
+						eye1[i] = ""+sorte1[(i-2)];
+					}
 				}
 			}
 			for(int i = 0; i < eye2.length; i++){
 				if(i == 0){
-					eye2[i] = "Auge2";
+					eye2[i] = ""+id;
 				}else{
-					eye2[i] = ""+sorte2[(i-1)];
+					if(i == 1){
+						eye2[i] = "Auge2";
+					}else{
+						eye2[i] = ""+sorte2[(i-2)];
+					}
 				}
 			}
 			for(int i = 0; i < torso.length; i++){
 				if(i == 0){
-					torso[i] = "Torso";
+					torso[i] = ""+id;
 				}else{
-					torso[i] = ""+sortt1[(i-1)];
+					if(i == 1){
+						torso[i] = "Torso";
+					}else{
+						torso[i] = ""+sortt1[(i-2)];
+					}
 				}
 			}
 			
@@ -143,5 +170,4 @@ public class Assembler {
 		}
 		
 	}
-
 }
