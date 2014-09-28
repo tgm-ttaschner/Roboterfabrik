@@ -86,10 +86,12 @@ public class CLI {
 	 * The second index consists of: the index of the first ocurring whitespace after the first index+1 (otherwise the second index would equal the first index).
 	 * That's the reason why you have to add a whitespace character after the last argument's parameter.
 	 * Finally the input gets checked and some error messages are displayed.
+	 * 
+	 * @param arguments The users input
 	 */
-	public void run()	{
+	public void run(String arguments)	{
 		
-		String s = this.read();
+		String s = arguments;
 
 		if (arguments.trim().equals("help"))	{
 			this.help();
@@ -274,6 +276,6 @@ public class CLI {
 	public static void main(String[] args) {
 		CLI c = new CLI();
 		c.welcome();
-		c.run();
+		c.run(c.read());
 	}
 }
