@@ -35,7 +35,11 @@ public class Watchdog implements Runnable {
 	 */
 	public void killAll()	{
 		for (Watchable watch: watchables) {
+			try {
 			watch.shutdown();
+			} catch (NullPointerException e)	{
+				System.out.println("Thread darf nicht null sein!");
+			}
 		}
 	}
 

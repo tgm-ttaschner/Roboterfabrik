@@ -30,6 +30,16 @@ public class TestWatchDog {
 
 		new Thread(wd).start();
 	}
+	
+	@Test
+	public void addNull()	{
+		NumberThread t = null;
+
+		new Thread(t).start();
+		wd.add(t);
+
+		new Thread(wd).start();
+	}
 
 	@Test
 	public void killAll()	{
