@@ -56,16 +56,40 @@ public class Assembler {
 		a = new Assembler(s.getAssemblerID());
 		a.build();
 	}
-
+*/
 	public void build(ArrayList<String> parts) {
-		String arm1 = a.deliver(1);
-		String arm2 = a.deliver(1);
-		String torso1 = a.deliver(2);
-		String chaindrive1 = a.deliver(3);
-		String eye1 = a.deliver(4);
-		String eye2 = a.deliver(4);
+		String[] a1 = a.deliver(1);
+		String[] a2 = a.deliver(1);
+		String[] t1 = a.deliver(2);
+		String[] c1 = a.deliver(3);
+		String[] e1 = a.deliver(4);
+		String[] e2 = a.deliver(4);
 		
-	
-	}*/
+		if(a1 != null && a2 != null && t1 != null && c1 != null && e1 != null && e2 != null){
+			int[] sorta1 = new int[(a1.length - 1)];
+			int[] sorta2 = new int[(a2.length - 1)];
+			int[] sortt1 = new int[(t1.length - 1)];
+			int[] sortc1 = new int[(c1.length - 1)];
+			int[] sorte1 = new int[(e1.length - 1)];
+			int[] sorte2 = new int[(e1.length - 1)];
+		
+			toInt(sorta1,a1);
+			toInt(sorta2,a2);
+			toInt(sortt1,t1);
+			toInt(sortc1,c1);
+			toInt(sorte1,e1);
+			toInt(sorte2,e2);
+		
+			sort(sorta1);
+			sort(sorta2);
+			sort(sortt1);
+			sort(sortc1);
+			sort(sorte1);
+			sort(sorte2);
+		}else{
+			System.out.print("Nicht alle benoetigten Teile vorhanden");
+		}
+		
+	}
 
 }
