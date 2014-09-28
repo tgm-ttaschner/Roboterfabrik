@@ -55,6 +55,60 @@ public class IO {
 	
 	/**
 	 * 
+	 * Writes a String value into a file on the HDD, with no line breaks.
+	 * Here, it is used to store robots in the storage.
+	 * 
+	 * @param value A char sequence, which should be written.
+	 * @return true in case of success, otherwise false.
+	 */
+	public boolean writeRow(String value) {
+		try {
+			char[] sequence = value.toCharArray();
+			BufferedWriter buff = new BufferedWriter(new FileWriter(pathfile, true));
+			for (int i = 0; i < sequence.length; i++) {
+				buff.append(sequence[i]);
+			}
+			buff.close();
+			return true;
+			
+		} catch (IOException e) {
+			System.out.println("Fatal Error!\nIOException");
+		} catch (NullPointerException e) {
+		System.out.println("Fatal Error!\nNullPointerException");
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * 
+	 * Writes a String value into a blank file on the HDD.
+	 * Here, it is used to store robots in the storage.
+	 * 
+	 * @param value A char sequence, which should be written.
+	 * @return true in case of success, otherwise false.
+	 */
+	public boolean overWrite(String value) {
+		try {
+			char[] sequence = value.toCharArray();
+			BufferedWriter buff = new BufferedWriter(new FileWriter(pathfile));
+			for (int i = 0; i < sequence.length; i++) {
+				buff.append(sequence[i]);
+			}
+			buff.close();
+			return true;
+			
+		} catch (IOException e) {
+			System.out.println("Fatal Error!\nIOException");
+		} catch (NullPointerException e) {
+		System.out.println("Fatal Error!\nNullPointerException");
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * 
 	 * Reads a file from the HDD and wraps it up into a String array.
 	 * Here it is used to get robots out of the storage.
 	 * 
