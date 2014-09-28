@@ -15,8 +15,8 @@ import java.io.*;
 public class CLI {
 
 	private String arguments;
-	private String lagerVerzeichnis;
-	private String logVerzeichnis;
+	public static String lagerVerzeichnis;
+	public static String logVerzeichnis;
 
 	private int lieferantenAnzahl;
 	private int monteurAnzahl;
