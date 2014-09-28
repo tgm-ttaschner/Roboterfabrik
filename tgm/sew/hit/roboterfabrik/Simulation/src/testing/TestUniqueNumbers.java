@@ -23,12 +23,18 @@ public class TestUniqueNumbers {
 		un = new UniqueNumbers();
 	}
 	
+	/**
+	 * Adds one random number.
+	 */
 	@Test
 	public void addOneNumber()	{
 		un.add();
 		assertNotNull(un.getRandomNumbers()[0]);
 	}
 	
+	/**
+	 * Adds 10 random numbers to the array.
+	 */
 	@Test
 	public void addMoreNumbers()	{
 		un.add(10);
@@ -37,18 +43,27 @@ public class TestUniqueNumbers {
 		}
 	}
 	
+	/**
+	 * Checks how the method reacts if '0' new numbers are entered.
+	 */
 	@Test (expected = IllegalArgumentException.class)
 	public void addTooFewNumbers()	{
 		un.add(0);
 		assertNotNull(un.getRandomNumbers()[0]);
 	}
 	
+	/**
+	 * Checks how the method handles negative numbers.
+	 */
 	@Test (expected = IllegalArgumentException.class)
 	public void addTooFewNumbers2()	{
 		un.add(-100);
 		assertNotNull(un.getRandomNumbers()[0]);
 	}
 	
+	/**
+	 * Creates a huge array.
+	 */
 	@Test
 	public void addLotsOfNumbers()	{
 		un.add(10000);
