@@ -28,7 +28,7 @@ public class Assembler {
 		IO ioEye = new IO(path3);
 		IO ioTorso = new IO(path4);
 	}
-	public void sort(int[] array){
+	public static void sort(int[] array){
 		int length = array.length;
 		int value;
 		for(int c = 0; c < length-1; c++) {	
