@@ -29,12 +29,18 @@ public class TestIO {
 		iowrite = new IO(IO.getWorkingDir() +"/src/testing/IOplayground/write.csv");
 	}
 	
+	/**
+	 * Checks if the actual working directory could be found.
+	 */
 	@Test
 	public void testgetWorkingDirectory() {
 		String s = IO.getWorkingDir();
 		assertTrue(s.contains("/tgm/sew/hit/roboterfabrik/Simulation/"));
 	}
 	
+	/**
+	 * Reads a file from the HDD.
+	 */
 	@Test
 	public void testRead() {
 		ArrayList<String> al = ioread.read();
@@ -49,12 +55,18 @@ public class TestIO {
 		assertEquals("Readingthefilewassuccessfulhooray", asrt);
 	}
 	
+	/**
+	 * Checks how a FileNotFoundException is handled by the read-method.
+	 */
 	@Test
 	public void testReadFileNotFoundException() {
 		ioread = new IO("");
 		ioread.read();
 	}
 	
+	/**
+	 * Checks if a file could be written on the HDD.
+	 */
 	@Test
 	public void testWrite() {
 		out = iowrite.write("Test writing\n");
@@ -62,6 +74,9 @@ public class TestIO {
 		assertEquals(true, out);
 	}
 	
+	/**
+	 * Checks how a IOException is handled by the write-method.
+	 */
 	@Test
 	public void testWriteIOException() {
 		iowrite = new IO("");
@@ -70,6 +85,9 @@ public class TestIO {
 		assertEquals(false, out);
 	}
 	
+	/**
+	 * Checks how a IOException is handled by the write-method.
+	 */
 	@Test
 	public void testWriteNullPointerException() {
 		iowrite = new IO(null);
@@ -78,6 +96,9 @@ public class TestIO {
 		assertEquals(false, out);
 	}
 	
+	/**
+	 * Checks if the files are present on the hard drive.
+	 */
 	@Test
 	public void testCheckfiles() {
 		IO.CheckFiles(IO.getWorkingDir() + "/src/testing/IOplayground/csv");
@@ -88,6 +109,9 @@ public class TestIO {
 		assertEquals(true, file);
 	}
 	
+	/**
+	 * Checks how a IOException is handled by the checkfile-method.
+	 */
 	@Test
 	public void testCheckfilesIOException() {
 		IO.CheckFiles("");
@@ -98,6 +122,9 @@ public class TestIO {
 		assertEquals(false, file);
 	}
 	
+	/**
+	 * Checks if the directory is present on the hard drive.
+	 */
 	@Test
 	public void testCheckdir() {
 		IO.checkDir(IO.getWorkingDir() + "/src/testing/IOplayground/csv");
@@ -108,6 +135,9 @@ public class TestIO {
 		assertEquals(true, file);
 	}
 	
+	/**
+	 * Checks the output if the directory could not be found.
+	 */
 	@Test
 	public void testCheckdirother() {
 		out = IO.checkDir(IO.getWorkingDir() + "/src/testing/IOplayground/theresnothinginhere");
