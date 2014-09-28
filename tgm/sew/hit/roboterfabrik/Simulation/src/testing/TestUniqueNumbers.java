@@ -71,5 +71,4 @@ public class TestUniqueNumbers {
 			assertNotNull(un.getRandomNumbers()[i]);
 		}
 	}
-	
 }
