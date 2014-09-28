@@ -102,10 +102,12 @@ public class IO {
 	 * 
 	 * Empty csv-files will be created in the directory.
 	 * 
-	 * IMPORTANT NOTICE: Use the 'getWorkingDir()' method first, then enter the user-input directory. 	IO.check(getWorkingDir() +userinput);
 	 * 
 	 */
-	public static void CheckFiles(String path) {
+	public static void CheckFiles() {
+		
+		String path = getWorkingDir() + CLI.lagerVerzeichnis;
+		
 		try {
 			BufferedWriter eye = new BufferedWriter(new FileWriter(path+"/eye.csv"));
 			eye.write("");
@@ -132,11 +134,11 @@ public class IO {
 	 * 
 	 * Checks if the directory, which the user entered is existent, otherwise it will be created. 
 	 * 
-	 * IMPORTANT NOTICE: Use the 'getWorkingDir()' method first, then enter the user-input directory. 	IO.check(getWorkingDir() +userinput);
 	 * 
 	 * @param path The entered filepath.
 	 */
-	public static boolean checkDir(String path) {
+	public static boolean checkDir() {
+		String path = getWorkingDir() + CLI.lagerVerzeichnis;
 		File f = new File(path);
 		boolean dir = f.isDirectory();
 		

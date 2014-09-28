@@ -7,6 +7,7 @@ import java.util.*;
 
 import org.junit.*;
 
+import build.CLI;
 import build.IO;
 
 /**
@@ -101,7 +102,8 @@ public class TestIO {
 	 */
 	@Test
 	public void testCheckfiles() {
-		IO.CheckFiles(IO.getWorkingDir() + "/src/testing/IOplayground/csv");
+		CLI.lagerVerzeichnis = "/src/testing/IOplayground/csv/eye.csv";
+		IO.CheckFiles();
 		
 		File f = new File(IO.getWorkingDir() + "/src/testing/IOplayground/csv/eye.csv");
 		boolean file = f.isFile();
@@ -114,7 +116,7 @@ public class TestIO {
 	 */
 	@Test
 	public void testCheckfilesIOException() {
-		IO.CheckFiles("");
+		IO.CheckFiles();
 		
 		File f = new File("");
 		boolean file = f.isFile();
@@ -127,7 +129,8 @@ public class TestIO {
 	 */
 	@Test
 	public void testCheckdir() {
-		IO.checkDir(IO.getWorkingDir() + "/src/testing/IOplayground/csv");
+		CLI.lagerVerzeichnis = "/src/testing/IOplayground/csv";
+		IO.checkDir();
 		
 		File f = new File(IO.getWorkingDir() + "/src/testing/IOplayground/csv");
 		boolean file = f.isDirectory();
@@ -140,7 +143,8 @@ public class TestIO {
 	 */
 	@Test
 	public void testCheckdirother() {
-		out = IO.checkDir(IO.getWorkingDir() + "/src/testing/IOplayground/theresnothinginhere");
+		CLI.lagerVerzeichnis = "/src/testing/IOplayground/theresnothinginhere";
+		out = IO.checkDir();
 		
 		File f = new File(IO.getWorkingDir() + "/src/testing/IOplayground/theresnothinginhere");
 		f.delete();
