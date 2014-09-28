@@ -7,17 +7,29 @@ import threading.Watchable;
 public class Assembler {
 
 	private Watchable watchable;
-
+	/**
+	 * Secretary, which gives the IDs to the Threadees and Assemblers
+	 */
 	private Secretary secretary;
 
 	private IO iO;
-
-	private Assembler a;
-	
+	/**
+	 * id -> ID of the Assembler
+	 */
 	private Long id;
-	
+	/**
+	 * idTh -> ID of the Threadee
+	 */
 	private Long idTh;
-	
+	/**
+	 * Storage, where the parts come from
+	 */
+	private Storage s;
+	/**
+	 * 
+	 * @param id: ID of the Assembler
+	 * @param idThreadee: ID of the Threadee 
+	 */
 	public Assembler(Long id,Long idThreadee) {
 		File f1 = new File(""); 
 		String path1 = f1.getAbsolutePath() +"/src/arm.csv";
@@ -34,6 +46,10 @@ public class Assembler {
 		this.id = id;
 		this.idTh = idThreadee;
 	}
+	/**
+	 * This Method sorts values of an int-array in ascending order 
+	 * @param array: Array with int-values, that should be ordered
+	 */
 	public static void sort(int[] array){
 		int length = array.length;
 		int value;
@@ -47,6 +63,11 @@ public class Assembler {
 			}
 		}	
 	}
+	/**
+	 * This method parses string-values of a string-array into int-values which are saved in an int-array
+	 * @param array1: int-array in which the String-values of array2 are saved as int-values
+	 * @param array2: string-array, which string-values will be parsed into int-values
+	 */
 	public static void toInt(int[] array1,String[] array2){
 		for (int i = 0; i < array2.length; i++) {
 		    if(i == 0){
@@ -58,17 +79,16 @@ public class Assembler {
 	}
 
 	public void run() {
-		a = new Assembler(secretary.getID(),secretary.getID());
-		a.build();
+		this.build();
 	}
 	
-	public void build(ArrayList<String> parts) {
-		String[] a1 = a.deliver(1);
-		String[] a2 = a.deliver(1);
-		String[] t1 = a.deliver(2);
-		String[] c1 = a.deliver(3);
-		String[] e1 = a.deliver(4);
-		String[] e2 = a.deliver(4);
+	public void build() {
+		String[] a1 = s.deliver(1);
+		String[] a2 = s.deliver(1);
+		String[] t1 = s.deliver(2);
+		String[] c1 = s.deliver(3);
+		String[] e1 = s.deliver(4);
+		String[] e2 = s.deliver(4);
 		
 		if(a1 != null && a2 != null && t1 != null && c1 != null && e1 != null && e2 != null){
 			int[] sorta1 = new int[(a1.length - 1)];
