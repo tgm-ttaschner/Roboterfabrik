@@ -44,9 +44,15 @@ public class TestIO {
 		
 		while (it.hasNext()) {
 			asrt = asrt + it.next();
-		}	
+		}
 		
 		assertEquals("Readingthefilewassuccessfulhooray", asrt);
+	}
+	
+	@Test
+	public void testReadFileNotFoundException() {
+		ioread = new IO("");
+		ioread.read();
 	}
 	
 	@Test
@@ -57,6 +63,22 @@ public class TestIO {
 	}
 	
 	@Test
+	public void testWriteIOException() {
+		iowrite = new IO("");
+		out = iowrite.write("Test writing\n");
+		
+		assertEquals(false, out);
+	}
+	
+	@Test
+	public void testWriteNullPointerException() {
+		iowrite = new IO(null);
+		out = iowrite.write("Test writing\n");
+		
+		assertEquals(false, out);
+	}
+	
+	@Test
 	public void testCheckfiles() {
 		IO.CheckFiles(IO.getWorkingDir() + "/src/testing/IOplayground/csv");
 		
@@ -64,6 +86,16 @@ public class TestIO {
 		boolean file = f.isFile();
 		
 		assertEquals(true, file);
+	}
+	
+	@Test
+	public void testCheckfilesIOException() {
+		IO.CheckFiles("");
+		
+		File f = new File("");
+		boolean file = f.isFile();
+		
+		assertEquals(false, file);
 	}
 	
 	@Test
