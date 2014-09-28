@@ -105,7 +105,7 @@ public class TestStorage {
 	}
 	
 	/**
-	 * Triggers the return null, with no 
+	 * Triggers the return null, with no valid part.
 	 */
 	@Test
 	public void testDeliverFalse() {
