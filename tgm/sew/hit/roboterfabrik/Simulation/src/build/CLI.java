@@ -34,9 +34,7 @@ public class CLI {
 	 * Constructor, runs welcome() and run()
 	 */
 	public CLI()	{
-
-		this.welcome();
-		this.run();
+		
 	}
 
 	/**
@@ -274,6 +272,8 @@ public class CLI {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new CLI();
+		CLI c = new CLI();
+		c.welcome();
+		c.run();
 	}
 }
