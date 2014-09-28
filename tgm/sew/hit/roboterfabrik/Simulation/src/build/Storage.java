@@ -4,7 +4,8 @@ import java.util.*;
 
 /**
  * 
- * 
+ * The storage provides parts for the assembler.
+ * The assembler requests one part each, due to faster handling.
  * 
  * @author Michael
  * @version 2014-09-28
