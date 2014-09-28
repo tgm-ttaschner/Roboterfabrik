@@ -33,11 +33,6 @@ public class Furnisher implements Runnable {
 		int amounttorso = altor.size();
 		int amountchaindrive = alcha.size();
 		
-		System.out.println(amountarm);
-		System.out.println(amounteye);
-		System.out.println(amounttorso);
-		System.out.println(amountchaindrive);
-		
 		if (amountarm < 2100) {
 			arm.overWrite("");
 			for (int i = 0; i < 100; i++) {
@@ -157,10 +152,12 @@ public class Furnisher implements Runnable {
 	}
 	
 	public static void main(String[] args) {
-		Thread t = new Thread(new Furnisher());
+		
 		CLI.lagerVerzeichnis = "/src/testing/IOplayground/csv";
+		Thread t = new Thread(new Furnisher());
 		
 		t.start();
+		
 	}
 
 }

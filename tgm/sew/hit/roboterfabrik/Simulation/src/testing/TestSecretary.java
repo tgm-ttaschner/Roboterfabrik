@@ -47,4 +47,5 @@ public class TestSecretary {
 		
 		assertEquals(l, output);
 	}
+	
 }
