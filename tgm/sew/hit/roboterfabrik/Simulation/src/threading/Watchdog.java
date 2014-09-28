@@ -50,7 +50,7 @@ public class Watchdog implements Runnable {
 		try	{
 			Thread.sleep(time);
 		} catch (InterruptedException e)	{
-			e.printStackTrace();
+			System.out.println("Thread got interrupted, terminating now!");
 		}
 
 		killAll();
