@@ -41,6 +41,15 @@ public class Assembler {
 			}
 		}	
 	}
+	public static void toInt(int[] array1,String[] array2){
+		for (int i = 0; i < array2.length; i++) {
+		    if(i == 0){
+		    	
+		    }else{
+		    	array1[(i-1)] = Integer.parseInt(array2[i]); 
+		    }
+		}
+	}
 /*
 	public void run() {
 		Secretary s = new Secretary();
