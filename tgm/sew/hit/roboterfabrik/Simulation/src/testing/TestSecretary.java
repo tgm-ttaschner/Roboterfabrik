@@ -20,4 +20,5 @@ public class TestSecretary {
 	public void setup() {
 		Secretary obj = new Secretary(100);
 	}
+	
 }
