@@ -18,13 +18,13 @@ public class Assembler {
 	
 	public Assembler(Long id) {
 		File f1 = new File(""); 
-		String path1 = f1.getAbsolutePath() +"/src/arm.csv";
+		String path1 = f1.getAbsolutePath() +CLI.lagerVerzeichnis +"/arm.csv";
 		File f2 = new File(""); 
-		String path2 = f2.getAbsolutePath() +"/src/chaindrive.csv";
+		String path2 = f2.getAbsolutePath() +CLI.lagerVerzeichnis +"/chaindrive.csv";
 		File f3 = new File(""); 
-		String path3 = f3.getAbsolutePath() +"/src/eye.csv";
+		String path3 = f3.getAbsolutePath() +CLI.lagerVerzeichnis +"/eye.csv";
 		File f4 = new File(""); 
-		String path4 = f4.getAbsolutePath() +"/src/torso.csv";
+		String path4 = f4.getAbsolutePath() +CLI.lagerVerzeichnis +"/torso.csv";
 		IO ioArm = new IO(path1);
 		IO ioChaindrive = new IO(path2);
 		IO ioEye = new IO(path3);

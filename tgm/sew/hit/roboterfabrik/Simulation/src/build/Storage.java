@@ -15,8 +15,22 @@ public class Storage {
 	public static final int CHAINDRIVE = 3;
 	public static final int EYE = 4;
 
+	/**
+	 * 
+	 * Delivers one row (equals one part), stored in an array for better handling.
+	 * 
+	 * @param part
+	 * @return
+	 */
 	public String[] deliver(int part) {
-		return null;
+		
+		switch(part) {
+		
+			case 1:
+				
+				IO 
+		
+		}
 	}
 
 }
