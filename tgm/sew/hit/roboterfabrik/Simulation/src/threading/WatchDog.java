@@ -9,7 +9,7 @@ import java.util.*;
  * @version 27.09.2014
  *
  */
-public class Watchdog implements Runnable {
+public class WatchDog implements Runnable {
 	private int time;
 	private HashSet<Watchable> watchables;
 
@@ -17,7 +17,7 @@ public class Watchdog implements Runnable {
 	/**
 	 * @param time The time in milliseconds until the WatchDog kills the threads.
 	 */
-	public Watchdog(int time) {
+	public WatchDog(int time) {
 		this.time = time;
 		this.watchables = new HashSet<Watchable>();
 	}

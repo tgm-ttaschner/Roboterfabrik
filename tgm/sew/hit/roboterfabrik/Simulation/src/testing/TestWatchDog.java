@@ -3,7 +3,7 @@ package testing;
 import org.junit.*;
 
 import threading.NumberThread;
-import threading.Watchdog;
+import threading.WatchDog;
 
 /**
  * In this class WatchDog undergoes certain tests to guarantee a bugfree execution.
@@ -14,13 +14,19 @@ import threading.Watchdog;
  */
 public class TestWatchDog {
 
-	Watchdog wd;
+	WatchDog wd;
 
+	/**
+	 * Initializes a new WatchDog
+	 */
 	@Before
 	public void setup() {
-		wd = new Watchdog(1);
+		wd = new WatchDog(1);
 	}
 
+	/**
+	 * Adds a new thread to the WatchDog which outputs 1 and runs it.
+	 */
 	@Test
 	public void add()	{
 		NumberThread t = new NumberThread(1);
@@ -31,6 +37,9 @@ public class TestWatchDog {
 		new Thread(wd).start();
 	}
 	
+	/**
+	 * Adds a null thread to the WatchDog and runs it
+	 */
 	@Test
 	public void addNull()	{
 		NumberThread t = null;
@@ -41,6 +50,9 @@ public class TestWatchDog {
 		new Thread(wd).start();
 	}
 
+	/**
+	 * Adds a new thread to the WatchDog which outputs 2 and kills it.
+	 */
 	@Test
 	public void killAll()	{
 		NumberThread t = new NumberThread(2);
@@ -53,6 +65,9 @@ public class TestWatchDog {
 		new Thread(wd).start();
 	}
 
+	/**
+	 * Adds a new thread to the WatchDog which outputs 3 and runs it via run().
+	 */
 	@Test
 	public void run()	{
 		NumberThread t = new NumberThread(3);
@@ -65,9 +80,12 @@ public class TestWatchDog {
 		new Thread(wd).start();
 	}
 
+	/**
+	 * Adds a new thread to the WatchDog which outputs 4 and runs it via run() with the runtime set to 0.
+	 */
 	@Test
 	public void zeroRuntime()	{
-		wd = new Watchdog(0);
+		wd = new WatchDog(0);
 		NumberThread t = new NumberThread(4);
 
 		new Thread(t).start();
@@ -78,9 +96,13 @@ public class TestWatchDog {
 		new Thread(wd).start();
 	}
 
+	/**
+	 * Adds a new thread to the WatchDog which outputs 5 and runs it via run() with the runtime set to -10.
+	 * An IllegalArgumentException is excepted to be thrown.
+	 */
 	@Test (expected = IllegalArgumentException.class)
 	public void negativeRuntime()	{
-		wd = new Watchdog(-10);
+		wd = new WatchDog(-10);
 		NumberThread t = new NumberThread(5);
 
 		new Thread(t).start();
@@ -90,5 +112,4 @@ public class TestWatchDog {
 
 		new Thread(wd).start();
 	}
-
 }

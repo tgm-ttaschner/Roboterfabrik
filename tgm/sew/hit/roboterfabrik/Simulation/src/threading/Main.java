@@ -3,7 +3,7 @@ package threading;
 public class Main {
 	public static void main(String[] args) {
 		
-		Watchdog wd = new Watchdog(10);
+		WatchDog wd = new WatchDog(10);
 		
 		for (int i = 0; i < 5; i++) {
 			
