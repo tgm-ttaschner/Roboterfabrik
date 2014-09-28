@@ -16,9 +16,35 @@ import build.Secretary;
  */
 public class TestSecretary {
 	
+	Secretary obj;
+	Long output;
+	
 	@Before
 	public void setup() {
-		Secretary obj = new Secretary(100);
+		obj = new Secretary(100);
 	}
 	
+	/**
+	 * Requests an ID.
+	 */
+	@Test
+	public void testGetID()	{
+		output = obj.getID();
+		
+		assertNotNull(output);
+	}
+	
+	/**
+	 * Requests an ID.
+	 */
+	@Test
+	public void testGetID100times()	{
+		for (int i = 0; i < 110; i++) {
+			output = obj.getID();
+		}
+		
+		Long l = -1l;
+		
+		assertEquals(l, output);
+	}
 }

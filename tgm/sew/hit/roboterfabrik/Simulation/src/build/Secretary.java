@@ -35,10 +35,15 @@ public class Secretary {
 	 * @return out A unique, random number.
 	 */
 	public Long getID() {
-		Long out =  randomnumbers[count];
-		count++;
+		if (count < amount) {
+			Long out =  randomnumbers[count];
+			count++;
+			
+			return out;
+		} else {
+			return -1l;
+		}
 		
-		return out;
 	}
 
 }
