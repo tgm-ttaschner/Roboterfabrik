@@ -28,6 +28,19 @@ public class Assembler {
 		IO ioEye = new IO(path3);
 		IO ioTorso = new IO(path4);
 	}
+	public void sort(int[] array){
+		int length = array.length;
+		int value;
+		for(int c = 0; c < length-1; c++) {	
+			for(int i = 0; i < length-1; i++) {
+				if(array[i] > array[i+1]) {	
+					value = array[i];	
+					array[i] = array[i+1];
+					array[i+1] = value;
+				}
+			}
+		}	
+	}
 /*
 	public void run() {
 		Secretary s = new Secretary();
