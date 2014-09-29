@@ -268,14 +268,4 @@ public class CLI {
 	public void setLaufzeit(int laufzeit) {
 		this.laufzeit = laufzeit;
 	}
-
-	/**
-	 * Main method for CLI
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		CLI c = new CLI();
-		c.welcome();
-		c.run(c.read());
-	}
 }
