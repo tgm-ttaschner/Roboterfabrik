@@ -15,6 +15,5 @@ public class Main {
 		
 		new Thread(wd).start();
 		
-		//CLI c = new CLI();
 	}
 }
