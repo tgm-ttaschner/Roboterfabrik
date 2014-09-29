@@ -205,7 +205,6 @@ public class CLI {
 
 	/**
 	 * Getter for logVerzeichnis
-	 * NOTE: Made static by Michael Weinberger for whatever reasons, not me!
 	 * @return logVerzeichnis Path where the log files are stored
 	 */
 	public String getLogVerzeichnis() {
@@ -214,7 +213,6 @@ public class CLI {
 
 	/**
 	 * Setter for logVerzeichnis
-	 * NOTE: Made static by Michael Weinberger for whatever reasons, not me!
 	 * @param logVerzeichnis Path where the log files are stored
 	 */
 	public void setLogVerzeichnis(String logVerzeichnis) {
