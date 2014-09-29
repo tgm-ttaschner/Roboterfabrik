@@ -4,107 +4,40 @@ import java.util.ArrayList;
 
 import threading.Watchable;
 
-public class Assembler {
-
-	private Watchable watchable;
-	/**
-	 * Secretary, which gives the IDs to the Threadees and Assemblers
-	 */
+public class Assembler implements Runnable{
+	private int mitarbeiterID;
 	private Secretary secretary;
-
-	private IO iO;
-	/**
-	 * id -> ID of the Assembler
-	 */
 	private Long id;
-	/**
-	 * idTh -> ID of the Threadee
-	 */
 	private Long idTh;
-	/**
-	 * Storage, where the parts come from
-	 */
-	private Storage s;
-	/**
-	 * 
-	 * @param id: ID of the Assembler
-	 * @param idThreadee: ID of the Threadee 
-	 */
-	public Assembler(Long id,Long idThreadee) {
-		File f1 = new File(""); 
-		String path1 = f1.getAbsolutePath() +CLI.lagerVerzeichnis +"/arm.csv";
-		File f2 = new File(""); 
-		String path2 = f2.getAbsolutePath() +CLI.lagerVerzeichnis +"/chaindrive.csv";
-		File f3 = new File(""); 
-		String path3 = f3.getAbsolutePath() +CLI.lagerVerzeichnis +"/eye.csv";
-		File f4 = new File(""); 
-		String path4 = f4.getAbsolutePath() +CLI.lagerVerzeichnis +"/torso.csv";
-		IO ioArm = new IO(path1);
-		IO ioChaindrive = new IO(path2);
-		IO ioEye = new IO(path3);
-		IO ioTorso = new IO(path4);
+	private Furnisher furnisher;
+	private Storage storage;
+	private boolean stop = false;
+	public Assembler(Long id, Long idThreadee,Secretary s,Storage st) {
 		this.id = id;
 		this.idTh = idThreadee;
-		
+		this.secretary = s;
+		this.storage = st;
 	}
-	/**
-	 * This Method sorts values of an int-array in ascending order 
-	 * @param array: Array with int-values, that should be ordered
-	 */
-	public static void sort(int[] array){
-		int length = array.length;
-		int value;
-		for(int c = 0; c < length-1; c++) {	
-			for(int i = 0; i < length-1; i++) {
-				if(array[i] > array[i+1]) {	
-					value = array[i];	
-					array[i] = array[i+1];
-					array[i+1] = value;
-				}
-			}
-		}	
-	}
-	/**
-	 * This method parses string-values of a string-array into int-values which are saved in an int-array
-	 * @param array1: int-array in which the String-values of array2 are saved as int-values
-	 * @param array2: string-array, which string-values will be parsed into int-values
-	 */
-	public static void toInt(int[] array1,String[] array2){
-		for (int i = 0; i < array2.length; i++) {
-		    if(i == 0){
-		    	
-		    }else{
-		    	array1[(i-1)] = Integer.parseInt(array2[i]); 
-		    }
+	public void stop() {
+		this.stop = true;
 		}
-	}
-
-	public void run() {
-		this.build();
-	}
-	
-	public void build() {
-		String[] a1 = s.deliver(1);
-		String[] a2 = s.deliver(1);
-		String[] t1 = s.deliver(2);
-		String[] c1 = s.deliver(3);
-		String[] e1 = s.deliver(4);
-		String[] e2 = s.deliver(4);
-		
-		if(a1 != null && a2 != null && t1 != null && c1 != null && e1 != null && e2 != null){
+	public Thread build(String[] a1, String[] a2, String[] a3, String[] a4, String[] a5, String[] a6){
+		if(a1 != null && a2 != null && a3 != null && a4 != null && a5 != null && a6 != null){
+			idTh = secretary.getID();
+			id = secretary.getID();
 			int[] sorta1 = new int[(a1.length - 1)];
 			int[] sorta2 = new int[(a2.length - 1)];
-			int[] sortt1 = new int[(t1.length - 1)];
-			int[] sortc1 = new int[(c1.length - 1)];
-			int[] sorte1 = new int[(e1.length - 1)];
-			int[] sorte2 = new int[(e1.length - 1)];
+			int[] sortt1 = new int[(a3.length - 1)];
+			int[] sortc1 = new int[(a4.length - 1)];
+			int[] sorte1 = new int[(a5.length - 1)];
+			int[] sorte2 = new int[(a6.length - 1)];
 		
 			toInt(sorta1,a1);
 			toInt(sorta2,a2);
-			toInt(sortt1,t1);
-			toInt(sortc1,c1);
-			toInt(sorte1,e1);
-			toInt(sorte2,e2);
+			toInt(sortt1,a3);
+			toInt(sortc1,a4);
+			toInt(sorte1,a5);
+			toInt(sorte2,a6);
 		
 			sort(sorta1);
 			sort(sorta2);
@@ -211,11 +144,50 @@ public class Assembler {
 					}
 				}
 			}
-			
-			
+			Threadee t = new Threadee(idTh,id, arm1, arm2, chaindrive, eye1, eye2,torso);
+			return t;
 		}else{
-			System.out.print("Nicht alle benoetigten Teile vorhanden");
+			System.out.print("Nicht alle Teile sind vorhanden");
+		}
+	}
+	@Override
+	public void run() {
+		while(stop == false){
+			long speed=300l;
+		
+			Thread.sleep(speed);
+			
+			String[] a1 = storage.deliver(1);
+			String[] a2 = storage.deliver(1);
+			String[] t1 = storage.deliver(2);
+			String[] c1 = storage.deliver(3);
+			String[] e1 = storage.deliver(4);
+			String[] e2 = storage.deliver(4);
+			
+			Threadee roboter = build(a1,a2,t1,c1,e1,e2);
 		}
 		
+	}	
+	public static void sort(int[] array){
+		int length = array.length;
+		int value;
+		for(int c = 0; c < length-1; c++) {	
+			for(int i = 0; i < length-1; i++) {
+				if(array[i] > array[i+1]) {	
+					value = array[i];	
+					array[i] = array[i+1];
+					array[i+1] = value;
+				}
+			}
+		}	
+	}
+	public void toInt(int[] array1,String[] array2){
+		for (int i = 0; i < array2.length; i++) {
+		    if(i == 0){
+		    	
+		    }else{
+		    	array1[(i-1)] = Integer.parseInt(array2[i]); 
+		    }
+		}
 	}
 }
