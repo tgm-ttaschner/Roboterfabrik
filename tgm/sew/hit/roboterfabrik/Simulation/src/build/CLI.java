@@ -1,7 +1,5 @@
 package build;
 
-import java.io.*;
-
 /**
  *
  * This class simulates a Console Line Interface (CLI).
@@ -50,32 +48,13 @@ public class CLI {
 	 * Contains help messages which are displayed when the user enters help
 	 */
 	public void help()	{
-		System.out.println("\nEin gültiger Aufruf könnte sein (Leerzeichen am Ende beachten!):\n'java tgm.sew.hit.roboterfabrik.Simulation --lager storage/roboter --logs logs/roboterfabrik --lieferanten 12 --monteure 25 --laufzeit 10000 '\n");
+		System.out.println("\nEin gültiger Aufruf könnte sein (Leerzeichen am Ende beachten!):\n'(java tgm.sew.hit.roboterfabrik.Simulation) --lager storage/roboter --logs logs/roboterfabrik --lieferanten 12 --monteure 25 --laufzeit 10000 '\n");
 		System.out.println("--lager: Lagerparameter\nWird gefolgt vom Verzeichnis zum Lager");
 		System.out.println("--logs: Logparameter\nWird gefolgt vom Verzeichnis zu den Logs");
 		System.out.println("--lieferanten: Lieferantenparameter\nWird gefolgt der Anzahl der Lieferanten in Furnisher");
 		System.out.println("--monteure: Monteurparameter\nWird gefolgt von der Anzahl der Monteure Assembler");
 		System.out.println("--laufzeit: Laufzeitparameter\nWird gefolgt von der Laufzeit in Millisekunden für den WatchDog");
 		System.out.println("\nDie Reihenfolge, in der die Parameter angegeben werden, ist jedoch egal, wichtig ist, dass am Ende ein Leerzeichen vorhanden ist");
-	}
-
-	/**
-	 * Read allows you to read the user's input
-	 * 
-	 * @return arguments The user input from the console 
-	 */
-	public String read()	{
-
-		BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println();
-
-		try {
-			arguments = console.readLine();
-		} catch (IOException e) {
-
-		}
-
-		return arguments;
 	}
 
 	/**
@@ -140,10 +119,6 @@ public class CLI {
 	 * If the user input doesn't contain a specific argument or has a faulty parameter, an error message gets stored in errors which gets displayed afer all the checks.
 	 */
 	public void check()	{
-		
-		if (!(arguments.trim()).startsWith("java tgm.sew.hit.roboterfabrik.Simulation"))	{
-			errors = errors + "Der Aufruf muss mit 'java tgm.sew.hit.roboterfabrik.Simulation' starten\n";
-		}
 
 		if (!arguments.trim().contains("--lager") || lagerVerzeichnis == null || lagerVerzeichnis.equals(""))	{
 			errors = errors + "Geben Sie den Lagerparameter (--lager) und einen gültigen Pfad (z.B. lager/stuff) zum Lager\n";
@@ -205,6 +180,7 @@ public class CLI {
 
 	/**
 	 * Getter for logVerzeichnis
+	 * NOTE: Made static by Michael Weinberger for whatever reasons, not me!
 	 * @return logVerzeichnis Path where the log files are stored
 	 */
 	public String getLogVerzeichnis() {
@@ -213,6 +189,7 @@ public class CLI {
 
 	/**
 	 * Setter for logVerzeichnis
+	 * NOTE: Made static by Michael Weinberger for whatever reasons, not me!
 	 * @param logVerzeichnis Path where the log files are stored
 	 */
 	public void setLogVerzeichnis(String logVerzeichnis) {

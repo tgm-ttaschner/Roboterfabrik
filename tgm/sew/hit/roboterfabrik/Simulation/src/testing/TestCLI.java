@@ -40,14 +40,6 @@ public class TestCLI {
 	}
 	
 	/**
-	 * Reads an user input
-	 */
-	@Test
-	public void read()	{
-		c.read();
-	}
-	
-	/**
 	 * Runs the CLI with a valid input
 	 */
 	@Test
