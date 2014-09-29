@@ -2,17 +2,20 @@ package build;
 
 import java.util.*;
 
+import threading.*;
 import build.IO;
 
 /**
  * 
- * The furnisher checks, if invoked, the inventory of the csv-files.
+ * The this checks, if invoked, the inventory of the csv-files.
  * 
  * @author Michael Weinberger 4AHITT
- * @version 2014-09-28
+ * @version 1914-09-28
  *
  */
 public class Furnisher implements Runnable {
+	
+	private boolean running;
 	
 	/**
 	 * This code should be executed by a thread.
@@ -36,128 +39,83 @@ public class Furnisher implements Runnable {
 		if (amountarm < 2100) {
 			arm.overWrite("");
 			for (int i = 0; i < 100; i++) {
-				arm.writeRow("Arm," 
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-						);
-				arm.write("" +Furnisher.getNumber());
+				arm.writeRow(this.OneRow(Storage.ARM));
+				arm.write("" +this.getNumber());
 			}
 		}
 		
 		if (amounteye < 2100) {
 			eye.overWrite("");
 			for (int i = 0; i < 100; i++) {
-				eye.writeRow("Eye," 
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-						);
-				eye.write("" +Furnisher.getNumber());
+				eye.writeRow(this.OneRow(Storage.EYE));
+				eye.write("" +this.getNumber());
 			}
 		}
 		
 		if (amounttorso < 2100) {
 			torso.overWrite("");
 			for (int i = 0; i < 100; i++) {
-				torso.writeRow("Torso," 
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-						);
-				torso.write("" +Furnisher.getNumber());
+				torso.writeRow(this.OneRow(Storage.TORSO));
+				torso.write("" +this.getNumber());
 			}
 		}
 		
 		if (amountchaindrive < 2100) {
 			chaindrive.overWrite("");
 			for (int i = 0; i < 100; i++) {
-				chaindrive.writeRow("Chaindrive," 
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-							+Furnisher.getNumber() +","
-						);
-				chaindrive.write("" +Furnisher.getNumber());
+				chaindrive.writeRow(this.OneRow(Storage.CHAINDRIVE));
+				chaindrive.write("" +this.getNumber());
 			}
 		}
 	}
 	
-	public static int getNumber() {
+	public int getNumber() {
 		Random generator= new Random();
 		return generator.nextInt(999);
 	}
 	
-	public static void main(String[] args) {
+	public String OneRow(int part) {
+		String out = "";
 		
-		CLI.lagerVerzeichnis = "/src/testing/IOplayground/csv";
-		Thread t = new Thread(new Furnisher());
-		
-		t.start();
-		
+		switch(part) {
+			case 1:
+				out = out +"Arm,";
+				
+				for (int i = 0; i < 19; i++) {
+					out = out + this.getNumber() +",";
+				}
+				
+				return out;
+				
+			case 2:
+				out = out +"Torso,";
+				
+				for (int i = 0; i < 19; i++) {
+					out = out + this.getNumber() +",";
+				}
+				
+				return out;
+				
+			case 3:
+				out = out +"Chaindrive,";
+				
+				for (int i = 0; i < 19; i++) {
+					out = out + this.getNumber() +",";
+				}
+				
+				return out;
+				
+			case 4:
+				out = out +"Eye,";
+				
+				for (int i = 0; i < 19; i++) {
+					out = out + this.getNumber() +",";
+				}
+				
+				return out;
+			
+		}
+		return null;
 	}
 
 }
