@@ -1,5 +1,8 @@
 package build;
 import java.io.File;
+
+import threading.Threadee;
+
 import java.util.ArrayList;
 
 import threading.Watchable;
@@ -21,7 +24,7 @@ public class Assembler implements Runnable{
 	public void stop() {
 		this.stop = true;
 		}
-	public Thread build(String[] a1, String[] a2, String[] a3, String[] a4, String[] a5, String[] a6){
+	public Threadee build(String[] a1, String[] a2, String[] a3, String[] a4, String[] a5, String[] a6){
 		if(a1 != null && a2 != null && a3 != null && a4 != null && a5 != null && a6 != null){
 			idTh = secretary.getID();
 			id = secretary.getID();
@@ -148,6 +151,7 @@ public class Assembler implements Runnable{
 			return t;
 		}else{
 			System.out.print("Nicht alle Teile sind vorhanden");
+			return null;
 		}
 	}
 	@Override
@@ -155,7 +159,12 @@ public class Assembler implements Runnable{
 		while(stop == false){
 			long speed=300l;
 		
-			Thread.sleep(speed);
+			try {
+				Thread.sleep(speed);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			String[] a1 = storage.deliver(1);
 			String[] a2 = storage.deliver(1);
