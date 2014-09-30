@@ -1,8 +1,7 @@
 package build;
 
 import java.util.*;
-
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.*;
 
 import threading.*;
 import build.IO;
@@ -12,12 +11,13 @@ import build.IO;
  * The this checks, if invoked, the inventory of the csv-files.
  * 
  * @author Michael Weinberger 4AHITT
- * @version 1914-09-28
+ * @version 2014-09-28
  *
  */
 public class Furnisher implements Runnable {
 	
 	private boolean running;
+	private static final Logger log4j = LogManager.getLogger(Furnisher.class);
 	
 	/**
 	 * This code should be executed by a thread.
@@ -78,6 +78,7 @@ public class Furnisher implements Runnable {
 	
 	public String OneRow(int part) {
 		String out = "";
+		log4j.log(Level.INFO, "One row was written.");
 		
 		switch(part) {
 			case 1:
