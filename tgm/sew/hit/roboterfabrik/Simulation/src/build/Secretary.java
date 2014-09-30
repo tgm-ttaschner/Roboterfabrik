@@ -1,5 +1,7 @@
 package build;
 
+import org.apache.logging.log4j.*;
+
 /**
  * 
  * The secretary hands out unique numbers for employees & robots.
@@ -13,7 +15,8 @@ public class Secretary {
 	Long[] randomnumbers;
 	private int count;
 	private int amount;
-
+	private static final Logger log4j = LogManager.getLogger(Furnisher.class);
+	
 	/**
 	 * 
 	 * Creates a new Long[] array with a specific length filled with random, unique numbers.
@@ -35,6 +38,8 @@ public class Secretary {
 	 * @return out A unique, random number.
 	 */
 	public Long getID() {
+		log4j.error("ID requested");
+		
 		if (count < amount) {
 			Long out =  randomnumbers[count];
 			count++;

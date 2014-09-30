@@ -2,6 +2,8 @@ package build;
 
 import java.util.*;
 
+import org.apache.logging.log4j.*;
+
 /**
  * 
  * The storage provides parts for the assembler.
@@ -22,6 +24,8 @@ public class Storage {
 	private Iterator<String> it;
 	private String[] output;
 	private int count;
+	
+	private static final Logger log4j = LogManager.getLogger(Furnisher.class);
 	
 	public Storage() {
 		
@@ -59,6 +63,7 @@ public class Storage {
 					file.write("");
 				}
 				
+				log4j.error("arm delivered");
 				return output;
 				
 			case 2:
@@ -82,6 +87,7 @@ public class Storage {
 					file.write("");
 				}
 				
+				log4j.error("torso delivered");
 				return output;
 				
 			case 3:
@@ -105,6 +111,7 @@ public class Storage {
 					file.write("");
 				}
 				
+				log4j.error("chaindrive delivered");
 				return output;
 				
 			case 4:
@@ -128,6 +135,7 @@ public class Storage {
 					file.write("");
 				}
 				
+				log4j.error("eye delivered");
 				return output;
 				
 		}

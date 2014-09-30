@@ -3,7 +3,6 @@ package build;
 import java.util.*;
 import org.apache.logging.log4j.*;
 
-import threading.*;
 import build.IO;
 
 /**
@@ -78,7 +77,6 @@ public class Furnisher implements Runnable {
 	
 	public String OneRow(int part) {
 		String out = "";
-		log4j.log(Level.INFO, "One row was written.");
 		
 		switch(part) {
 			case 1:
@@ -88,6 +86,7 @@ public class Furnisher implements Runnable {
 					out = out + this.getNumber() +",";
 				}
 				
+				log4j.error("One arm row was written to the file.");
 				return out;
 				
 			case 2:
@@ -97,6 +96,7 @@ public class Furnisher implements Runnable {
 					out = out + this.getNumber() +",";
 				}
 				
+				log4j.error("One torso row was written to the file.");
 				return out;
 				
 			case 3:
@@ -106,6 +106,7 @@ public class Furnisher implements Runnable {
 					out = out + this.getNumber() +",";
 				}
 				
+				log4j.error("One chaindrive row was written to the file.");
 				return out;
 				
 			case 4:
@@ -115,6 +116,7 @@ public class Furnisher implements Runnable {
 					out = out + this.getNumber() +",";
 				}
 				
+				log4j.error("One eye row was written to the file.");
 				return out;
 			
 		}

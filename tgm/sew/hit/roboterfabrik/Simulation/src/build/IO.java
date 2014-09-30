@@ -3,6 +3,8 @@ package build;
 import java.io.*;
 import java.util.*;
 
+import org.apache.logging.log4j.*;
+
 /**
  * 
  * This class should simplify the read/write-process of the csv-files.
@@ -14,6 +16,7 @@ import java.util.*;
  */
 public class IO {
 	private String pathfile;
+	private static final Logger log4j = LogManager.getLogger(Furnisher.class);
 	
 	/**
 	 * IMPORTANT NOTICE: When initializing an IO object, use the 'getWorkingDir()' method from below first, then enter the user-input directory.
@@ -34,6 +37,8 @@ public class IO {
 	 * @return true in case of success, otherwise false.
 	 */
 	public boolean write(String value) {
+		log4j.error("Attempt to write.");
+		
 		try {
 			char[] sequence = value.toCharArray();
 			BufferedWriter buff = new BufferedWriter(new FileWriter(pathfile, true));
@@ -62,6 +67,8 @@ public class IO {
 	 * @return true in case of success, otherwise false.
 	 */
 	public boolean writeRow(String value) {
+		log4j.error("Attempt to write a single row.");
+		
 		try {
 			char[] sequence = value.toCharArray();
 			BufferedWriter buff = new BufferedWriter(new FileWriter(pathfile, true));
@@ -89,6 +96,8 @@ public class IO {
 	 * @return true in case of success, otherwise false.
 	 */
 	public boolean overWrite(String value) {
+		log4j.error("Attempt to overwrite.");
+		
 		try {
 			char[] sequence = value.toCharArray();
 			BufferedWriter buff = new BufferedWriter(new FileWriter(pathfile));
@@ -115,6 +124,8 @@ public class IO {
 	 * @return output The String array with every line of text from the file in it.
 	 */
 	public ArrayList<String> read() {
+		log4j.error("Attempt to read.");
+		
 		ArrayList<String> output = new ArrayList<String>();
 		String[] temp;
 		
@@ -159,6 +170,7 @@ public class IO {
 	 * 
 	 */
 	public static void CheckFiles() {
+		log4j.error("Check Files ...");
 		
 		String path = getWorkingDir() + CLI.lagerVerzeichnis;
 		
@@ -192,6 +204,8 @@ public class IO {
 	 * @param path The entered filepath.
 	 */
 	public static boolean checkDir() {
+		log4j.error("Check Directory ...");
+		
 		String path = getWorkingDir() + CLI.lagerVerzeichnis;
 		File f = new File(path);
 		boolean dir = f.isDirectory();

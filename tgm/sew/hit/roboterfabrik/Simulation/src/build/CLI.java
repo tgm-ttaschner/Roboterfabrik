@@ -1,5 +1,7 @@
 package build;
 
+import org.apache.logging.log4j.*;
+
 /**
  *
  * This class simulates a Console Line Interface (CLI).
@@ -27,6 +29,8 @@ public class CLI {
 	private int lieferantenAnzahl;
 	private int monteurAnzahl;
 	private int laufzeit;
+	
+	private static final Logger log4j = LogManager.getLogger(Furnisher.class);
 
 	/**
 	 * Constructor
@@ -69,6 +73,8 @@ public class CLI {
 	 * @param arguments The users input
 	 */
 	public void run(String arguments)	{
+		log4j.error("Program started...");
+		log4j.error("Arguments: " +arguments);
 		
 		String s = arguments;
 
