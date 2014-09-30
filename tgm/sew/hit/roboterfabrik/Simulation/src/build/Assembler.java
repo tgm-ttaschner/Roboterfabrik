@@ -6,7 +6,14 @@ import threading.Threadee;
 import java.util.ArrayList;
 
 import threading.Watchable;
-
+/**
+ * 
+ * Assembler-Class
+ * 
+ * @author Alexander Koelbl 4AHITT
+ * @version 2014-09-30
+ *
+ */
 public class Assembler implements Runnable{
 	private int mitarbeiterID;
 	private Secretary secretary;
@@ -15,15 +22,31 @@ public class Assembler implements Runnable{
 	private Furnisher furnisher;
 	private Storage storage;
 	private boolean stop = false;
-	public Assembler(Long id, Long idThreadee,Secretary s,Storage st) {
-		this.id = id;
-		this.idTh = idThreadee;
+	/**
+	 * Constructor
+	 * @param s: Secretary, where the Threadees and Workers become their IDs
+	 * @param st: Sotrage, where the parts come from
+	 */
+	public Assembler(Secretary s,Storage st) {
 		this.secretary = s;
 		this.storage = st;
 	}
+	/*
+	 * Stops the run method
+	 */
 	public void stop() {
 		this.stop = true;
 		}
+	/**
+	 * This method simulates the process of building a roboter.
+	 * @param a1: String array in which the arm1 parts are in
+	 * @param a2: String array in which the arm2 parts are in
+	 * @param a3: String array in which the torso parts are in
+	 * @param a4: String array in which the chaindrive parts are in
+	 * @param a5: String array in which the eye1 parts are in
+	 * @param a6: String array in which the eye2 parts are in
+	 * @return
+	 */
 	public Threadee build(String[] a1, String[] a2, String[] a3, String[] a4, String[] a5, String[] a6){
 		if(a1 != null && a2 != null && a3 != null && a4 != null && a5 != null && a6 != null){
 			idTh = secretary.getID();
@@ -154,10 +177,14 @@ public class Assembler implements Runnable{
 			return null;
 		}
 	}
+	/**
+	 * 
+	 */
 	@Override
 	public void run() {
+		long speed=300l;
 		while(stop == false){
-			long speed=300l;
+			
 		
 			try {
 				Thread.sleep(speed);
@@ -177,6 +204,10 @@ public class Assembler implements Runnable{
 		}
 		
 	}	
+	/**
+	 * This method sorts the values of an int-array in ascending order
+	 * @param array: Array, which should be sorted
+	 */
 	public static void sort(int[] array){
 		int length = array.length;
 		int value;
@@ -190,6 +221,11 @@ public class Assembler implements Runnable{
 			}
 		}	
 	}
+	/**
+	 * This method takes a int and a string array and parses the string-values into int-values
+	 * @param array1: Int array, in which the string-values of array2 are saved as int-values
+	 * @param array2: String array, with the string-values in it
+	 */
 	public void toInt(int[] array1,String[] array2){
 		for (int i = 0; i < array2.length; i++) {
 		    if(i == 0){
