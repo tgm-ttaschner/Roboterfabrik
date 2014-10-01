@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import threading.Watchable;
 /**
  * 
- * Assembler-Class
+ * Assembler-Class, which simulates the process of building a roboter.
  * 
  * @author Alexander Koelbl 4AHITT
  * @version 2014-09-30
@@ -16,10 +16,10 @@ import threading.Watchable;
  */
 public class Assembler implements Runnable{
 	private Secretary secretary;
-	private Long id;
-	private Long idTh;
 	private Furnisher furnisher;
 	private Storage storage;
+	Long idTh;
+	Long id;
 	private boolean stop = false;
 	private IO io;
 	/**
@@ -58,27 +58,27 @@ public class Assembler implements Runnable{
 			int[] sorte1 = new int[(a5.length - 1)];
 			int[] sorte2 = new int[(a6.length - 1)];
 		
-			toInt(sorta1,a1);
-			toInt(sorta2,a2);
-			toInt(sortt1,a3);
-			toInt(sortc1,a4);
-			toInt(sorte1,a5);
-			toInt(sorte2,a6);
+			Assembler.toInt(sorta1,a1);
+			Assembler.toInt(sorta2,a2);
+			Assembler.toInt(sortt1,a3);
+			Assembler.toInt(sortc1,a4);
+			Assembler.toInt(sorte1,a5);
+			Assembler.toInt(sorte2,a6);
 		
-			sort(sorta1);
-			sort(sorta2);
-			sort(sortt1);
-			sort(sortc1);
-			sort(sorte1);
-			sort(sorte2);
+			Assembler.sort(sorta1);
+			Assembler.sort(sorta2);
+			Assembler.sort(sortt1);
+			Assembler.sort(sortc1);
+			Assembler.sort(sorte1);
+			Assembler.sort(sorte2);
 			
 			
-			String[] arm1 = new String[(sorta1.length + 1)];
-			String[] arm2 = new String[(sorta2.length + 1)];
-			String[] chaindrive = new String[(sortc1.length + 1)];
-			String[] eye1 = new String[(sorte1.length + 1)];
-			String[] eye2 = new String[(sorte2.length + 1)];
-			String[] torso = new String[(sortt1.length + 1)];
+			String[] arm1 = new String[(sorta1.length + 3)];
+			String[] arm2 = new String[(sorta2.length + 3)];
+			String[] chaindrive = new String[(sortc1.length + 3)];
+			String[] eye1 = new String[(sorte1.length + 3)];
+			String[] eye2 = new String[(sorte2.length + 3)];
+			String[] torso = new String[(sortt1.length + 3)];
 			
 			for(int i = 0; i < arm1.length; i++){
 				if(i == 0){
@@ -227,7 +227,7 @@ public class Assembler implements Runnable{
 	 * @param array1: Int array, in which the string-values of array2 are saved as int-values
 	 * @param array2: String array, with the string-values in it
 	 */
-	public void toInt(int[] array1,String[] array2){
+	public static void toInt(int[] array1,String[] array2){
 		for (int i = 0; i < array2.length; i++) {
 		    if(i == 0){
 		    	
