@@ -29,5 +29,4 @@ public class Threadee {
 		this.torso = partsTorso;
 	}
 	
-	
 }

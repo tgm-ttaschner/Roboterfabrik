@@ -15,13 +15,13 @@ import threading.Watchable;
  *
  */
 public class Assembler implements Runnable{
-	private int mitarbeiterID;
 	private Secretary secretary;
 	private Long id;
 	private Long idTh;
 	private Furnisher furnisher;
 	private Storage storage;
 	private boolean stop = false;
+	private IO io;
 	/**
 	 * Constructor
 	 * @param s: Secretary, where the Threadees and Workers become their IDs
@@ -192,6 +192,7 @@ public class Assembler implements Runnable{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 			
 			String[] a1 = storage.deliver(1);
 			String[] a2 = storage.deliver(1);
