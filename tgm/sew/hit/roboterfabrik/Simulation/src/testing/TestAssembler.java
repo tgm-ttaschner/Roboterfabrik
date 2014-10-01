@@ -30,6 +30,9 @@ public class TestAssembler {
 		Assembler.toInt(a1, s);
 		assertEquals(1,a1[0]);
 	}
+	/**
+	 * test the function of the build() method
+	 */
 	@Test
 	public void testBuild(){
 		String a1[] = {"teil","2","1"};
@@ -43,5 +46,4 @@ public class TestAssembler {
 		Assembler a = new Assembler(s,st);
 		Threadee t = a.build(a1,a2,a3,a4,a5,a6);
 	}
-	
 }
