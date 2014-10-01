@@ -8,7 +8,9 @@ import org.junit.Test;
 
 
 public class TestAssembler {
-	
+	/**
+	 * tests the function of the sort() method, if it really works
+	 */
 	@Test
 	public void testSort(){
 		int[] a1 = new int[3];
@@ -18,6 +20,9 @@ public class TestAssembler {
 		Assembler.sort(a1);
 		assertEquals(1, a1[0]);
 	}
+	/**
+	 * tests the function of the toInt() method, if it really works
+	 */
 	@Test
 	public void testtoInt(){
 		int[] a1 = new int[2];
@@ -37,9 +42,6 @@ public class TestAssembler {
 		Storage st = new Storage();
 		Assembler a = new Assembler(s,st);
 		Threadee t = a.build(a1,a2,a3,a4,a5,a6);
-		
-		
-		
 	}
 	
 }

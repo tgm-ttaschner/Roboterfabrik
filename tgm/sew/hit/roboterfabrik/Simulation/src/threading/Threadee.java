@@ -1,5 +1,10 @@
 package threading;
 
+/**
+ * Threadee Class
+ * @author Alexander Koelbl 4AHITT
+ *
+ */
 public class Threadee {
 	
 	private Long id;

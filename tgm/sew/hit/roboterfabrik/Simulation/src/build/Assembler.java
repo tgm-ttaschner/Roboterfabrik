@@ -45,7 +45,7 @@ public class Assembler implements Runnable{
 	 * @param a4: String array in which the chaindrive parts are in
 	 * @param a5: String array in which the eye1 parts are in
 	 * @param a6: String array in which the eye2 parts are in
-	 * @return
+	 * @return Threadee: Threadee with the finished robot
 	 */
 	public Threadee build(String[] a1, String[] a2, String[] a3, String[] a4, String[] a5, String[] a6){
 		if(a1 != null && a2 != null && a3 != null && a4 != null && a5 != null && a6 != null){
