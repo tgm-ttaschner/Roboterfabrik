@@ -6,21 +6,21 @@ import build.*;
 public class Simulation {
 	public static void main(String[] args) {
 		
-		int laufzeit;
+		int laufzeit = 0;
 		CLI c = new CLI();
 		Furnisher f = new Furnisher();
 		IO io = new IO(IO.getWorkingDir());
 		Secretary s = new Secretary(1);
 		Storage st = new Storage();
 		Assembler a = new Assembler(s,st);
-		String s = "";
+		String s1 = "";
 		WatchDog wd = new WatchDog(laufzeit);
 		try {
 			for (int i = 0; i < args.length; i++)	{
-				s = s + args[i] + " ";
+				s1 = s1 + args[i] + " ";
 			}
 			
-			c.setArguments(s);
+			c.setArguments(s1);
 			if (c.getArguments().equals("help"))	{
 				c.help();
 			} else	{
